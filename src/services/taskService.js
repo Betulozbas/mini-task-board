@@ -1,6 +1,4 @@
-console.log("taskService yüklendi");
-
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, updateDoc } from "firebase/firestore";
 
 import { db } from "../firebase/config";
 

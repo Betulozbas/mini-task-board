@@ -5,6 +5,7 @@ import {
   updateTask,
   updateTaskStatus,
 } from "../services/taskService";
+import { useCallback, useState } from "react";
 
 export function useTasks() {
   const [tasks, setTasks] = useState([]);
@@ -49,7 +50,7 @@ export function useTasks() {
       setLoading(true);
       await deleteTask(taskId);
     } catch (error) {
-      setError(error);
+      setError(error.message || "Görev silinirken bir hata oluştu.");
     } finally {
       setLoading(false);
     }
@@ -60,7 +61,7 @@ export function useTasks() {
       setLoading(true);
       await updateTaskStatus(taskId, newStatus);
     } catch (error) {
-      setError(error);
+      setError(error.message || "Görev durumu güncellenirken bir hata oluştu.");
     } finally {
       setLoading(false);
     }
